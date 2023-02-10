@@ -27,7 +27,7 @@ int RightTriangle::getSide(int side_number)
     }
 }
 
-float RightTriangle::getHypo()
+float RightTriangle::getHypo() const
 {
     return hypotenouse;
 }
@@ -36,4 +36,20 @@ float RightTriangle::getHypo()
 RightTriangle::~RightTriangle()
 {
     
+}
+
+
+bool RightTriangle::operator<(RightTriangle const& p) const
+{
+    return hypotenouse < p.getHypo(); 
+}
+
+bool RightTriangle::operator<(int i) const
+{
+    return hypotenouse < i;
+}
+
+bool operator<(int i, RightTriangle const& p)
+{
+    return i < p.getHypo();
 }

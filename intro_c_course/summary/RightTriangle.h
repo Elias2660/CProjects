@@ -1,3 +1,5 @@
+#pragma once
+
 /*
 example of a header file
 
@@ -17,7 +19,9 @@ class RightTriangle
         RightTriangle(); //constructor
         ~RightTriangle(); //destructor
         int getSide(int side_number);
-        float getHypo();
-
+        float getHypo() const;
+        bool operator<(RightTriangle const&p)const;
+        bool operator<(int i)const;
     
 };
+bool operator<(int i,RightTriangle const&p);
