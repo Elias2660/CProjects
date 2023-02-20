@@ -7,6 +7,14 @@ using std::cout;
 using std::endl;
 
 
+//example of a TEMPLATE
+template <class T> 
+T new_max(T const& t1, T const& t2)
+{
+	return t1 < t2? t2: t1;
+}
+
+
 
 //example of a FREE FUNCTION
 bool odd(int x) 
@@ -20,6 +28,9 @@ bool odd(int x)
         return false;
     }
 }
+
+
+
 
 int main()
 {
@@ -164,24 +175,134 @@ int main()
 // //operator overloading, allows for classes to be "operated on"
 // //writes a function that defines the operator
 // //usually a member function, sometimes a free function
-RightTriangle right1(9, 12);
-RightTriangle right2(7,6);
+// RightTriangle right1(9, 12);
+// RightTriangle right2(7,6);
 
-if (right1 < right2)
-{
-    cout << "first triangle is smaller than the second" << endl;
-}
-else
-{
-    cout << "first triangle is larger than the second" << endl;
-}
+// if (right1 < right2)
+// {
+//     cout << "first triangle is smaller than the second" << endl;
+// }
+// else
+// {
+//     cout << "first triangle is larger than the second" << endl;
+// }
 
+
+
+// /*
+// TEMPLATES
+// - are big deal for C++ programers
+// - similar to generics in other languages
+// - one rarely writes templates
+// - not that important to learn, used a lot in STL tho
+// */
+// cout << new_max(43, 54) << endl;
+
+
+// /*
+// INDIRECTION
+// - pointers and references
+// - Const
+// - const with indirection
+// */
+
+
+// /*
+// REFERENCES
+// - can only set target when declaring it
+// - all other actions go through reference
+// - can change target of reference
+// */
+
+// int b = 34;
+// int& rb = b;
+
+// cout << rb << endl;
+
+// rb = 5;
+
+// cout << b << endl;
+
+
+
+
+// /*
+// Pointer
+// - can point to something that exists
+// - can point nowhere
+// - can change where it points to
+// - nullptr means nullpointer
+// */
+// int A = 34;
+// int* pA = &A;
+
+// cout << pA << endl;
+// *pA = 45;
+
+// cout << A << endl;
+
+// RightTriangle right(9, 12);
+// RightTriangle* pright = &right;
+
+// //using functions from pointers
+// cout << pright->getHypo();
+
+
+// /*
+// CONST
+// - way to tell compiler you won't change something
+// - used when declaring a variable, function 
+// parameter (as reference or without), or modifier on a member function
+// - const correctness can be difficult (try to put before)
+// */
+
+// int x = 43;
+// int* const px = &x; // this means that px's target cannot be changed
+// int const * pyx = &x; // this means you cannot change the value of pyx using it
 
 
 /*
-TEMPLATES
-- are big deal for C++ programers
-- similar to generics in other languages
-- one rarely writes templates
+MEMORY MANAGEMENT
+- The Free Store (variables for longer time periods)
+*/
+
+//example of the free store
+RightTriangle* rightx = new RightTriangle(5, 7); //CREATE RIGHT TRIANGLE
+delete rightx; //delete or memory leak
+
+
+/*
+RULE OF THREE
+- create an object with the free store pointer
+- Special member functions to handle 
+- (destructor) deletes what is created with new
+- (copy constructor) uses new to initialize from existing value
+- (copy assignment operator) deletes, then uses new to initalize
+*/
+
+/*
+Rule of Zero
+- design class so no memory leaks
+- use .reset()
+*/
+
+/*
+STL Smart Pointers
+- unique pointer (non copyable, use std::move)
+- shared pointer (reference counted)
+- weak pointer (lets you peek at shared pointer without bumping up reference count
+
+
+
+*/
+
+
+/*
+POLYMORPHISM
+- lets you write general code that relies on specific implementations
+(update all account, pay everybody, etc)
+- pointers, referenence supported
+- copying solid objects derived to base can cause slicing
+- cast templates give you safety and expressiveness
 */
 }

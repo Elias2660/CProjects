@@ -8,3 +8,7 @@ https://app.pluralsight.com/library/courses/cplusplus-fundamentals-c17/table-of-
 -> Topics List
 
 
+Edit History
+2/20/23 - Reformated Files to be more organized, edited gitignore
+
+
